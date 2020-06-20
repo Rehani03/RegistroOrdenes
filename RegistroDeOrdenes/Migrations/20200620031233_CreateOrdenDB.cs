@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegistroDeOrdenes.Migrations
 {
-    public partial class CreateOrdenesDB : Migration
+    public partial class CreateOrdenDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

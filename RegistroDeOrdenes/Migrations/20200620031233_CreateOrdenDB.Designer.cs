@@ -9,8 +9,8 @@ using RegistroDeOrdenes.DAL;
 namespace RegistroDeOrdenes.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200620022657_CreateOrdenesDB")]
-    partial class CreateOrdenesDB
+    [Migration("20200620031233_CreateOrdenDB")]
+    partial class CreateOrdenDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
