@@ -11,6 +11,7 @@ namespace RegistroDeOrdenes.Models
         [Key]
         public int ordenDetalleId { get; set; }
         public int ordenId { get; set; }
+        public int productoId { get; set; }
         public int cantidad { get; set; }
         public decimal costo { get; set; }
 
@@ -18,6 +19,7 @@ namespace RegistroDeOrdenes.Models
         {
             ordenDetalleId = 0;
             ordenId = 0;
+            productoId = 0;
             cantidad = 0;
             costo = 0;
         }

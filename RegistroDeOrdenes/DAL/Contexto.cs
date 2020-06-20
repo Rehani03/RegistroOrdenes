@@ -18,6 +18,22 @@ namespace RegistroDeOrdenes.DAL
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Suplidores> Suplidores { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Productos>().HasData(new Productos
+            {
+                productoId = 1,
+                descripcion = "Salami",
+                costo = 100,
+                inventario = 20
+            });
 
+            modelBuilder.Entity<Suplidores>().HasData(new Suplidores
+            {
+                suplidorId = 1,
+                nombre = "Induveca"
+            });
+
+        }
     }
 }
