@@ -86,7 +86,7 @@ namespace RegistroDeOrdenes.Migrations
                             productoId = 1,
                             costo = 100m,
                             descripcion = "Salami",
-                            inventario = 20
+                            inventario = 0
                         });
                 });
 

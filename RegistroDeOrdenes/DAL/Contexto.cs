@@ -25,7 +25,7 @@ namespace RegistroDeOrdenes.DAL
                 productoId = 1,
                 descripcion = "Salami",
                 costo = 100,
-                inventario = 20
+                inventario = 0
             });
 
             modelBuilder.Entity<Suplidores>().HasData(new Suplidores

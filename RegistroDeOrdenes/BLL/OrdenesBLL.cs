@@ -28,13 +28,13 @@ namespace RegistroDeOrdenes.BLL
             try
             {
                 
-                //le sumamos el balance a la persona
+                //le sumamos la cantidad de productos adquiridos al inventario del producto
                 foreach (var item in ordenes.OrdenDetalles)
                 {
                     var auxOrden = contexto.Productos.Find(item.productoId);
                     if (auxOrden != null)
                     {
-                        auxOrden.inventario -= item.cantidad;
+                        auxOrden.inventario += item.cantidad;
                     }
                 }
                 contexto.Ordenes.Add(ordenes);
@@ -62,7 +62,7 @@ namespace RegistroDeOrdenes.BLL
 
             try
             {
-                //aqui borro del detalle y aumento el producto devuelto en inventario
+                //aqui borro del detalle y disminuyo el producto devuelto en inventario
                 foreach (var item in Anterior.OrdenDetalles)
                 {
                     var auxProducto = contexto.Productos.Find(item.productoId);
@@ -70,7 +70,7 @@ namespace RegistroDeOrdenes.BLL
                     {
                         if (auxProducto != null)
                         {
-                            auxProducto.inventario += item.cantidad;
+                            auxProducto.inventario -= item.cantidad;
                         }
 
                         contexto.Entry(item).State = EntityState.Deleted;
@@ -87,7 +87,7 @@ namespace RegistroDeOrdenes.BLL
                         contexto.Entry(item).State = EntityState.Added;
                         if (auxProducto != null)
                         {
-                            auxProducto.inventario -= item.cantidad;
+                            auxProducto.inventario += item.cantidad;
                         }
 
                     }
@@ -119,23 +119,27 @@ namespace RegistroDeOrdenes.BLL
 
             try
             {
-                //aqui le devuelvo las cantidades correspondientes a los producto
-                foreach (var item in Anterior.OrdenDetalles)
+                if (Existe(id))
                 {
-                    var auxProducto = contexto.Productos.Find(item.productoId);
-                    if (auxProducto != null)
+                    //aqui le resto las cantidades correspondientes a los producto
+                    foreach (var item in Anterior.OrdenDetalles)
                     {
-                        auxProducto.inventario += item.cantidad;
+                        var auxProducto = contexto.Productos.Find(item.productoId);
+                        if (auxProducto != null)
+                        {
+                            auxProducto.inventario -= item.cantidad;
+                        }
+                    }
+
+                    //aqui remueve la entidad
+                    var auxOrden = contexto.Ordenes.Find(id);
+                    if (auxOrden != null)
+                    {
+                        contexto.Ordenes.Remove(auxOrden);
+                        paso = contexto.SaveChanges() > 0;
                     }
                 }
-
-                //aqui remueve la entidad
-                var auxOrden = contexto.Ordenes.Find(id);
-                if (auxOrden != null)
-                {
-                    contexto.Ordenes.Remove(auxOrden);
-                    paso = contexto.SaveChanges() > 0;
-                }
+               
             }
             catch (Exception)
             {

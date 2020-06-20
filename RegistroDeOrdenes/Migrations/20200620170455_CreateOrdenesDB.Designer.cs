@@ -9,8 +9,8 @@ using RegistroDeOrdenes.DAL;
 namespace RegistroDeOrdenes.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200620031233_CreateOrdenDB")]
-    partial class CreateOrdenDB
+    [Migration("20200620170455_CreateOrdenesDB")]
+    partial class CreateOrdenesDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,7 +88,7 @@ namespace RegistroDeOrdenes.Migrations
                             productoId = 1,
                             costo = 100m,
                             descripcion = "Salami",
-                            inventario = 20
+                            inventario = 0
                         });
                 });
 

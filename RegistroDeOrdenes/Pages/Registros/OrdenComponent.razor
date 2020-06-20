@@ -39,7 +39,7 @@
                         <ValidationMessage For="@(() => ordenes.fecha)" />
                     </div>
 
-                        @*Suplidor*@
+                    @*Suplidor*@
                     <div class="form-group">
                         <label>SUPLIDOR:</label>
                         <select class="form-control" @bind="ordenes.suplidorId">
@@ -53,22 +53,22 @@
 
                     <div class="form-group">
                         <div class="form-row">
-
+                            @*Producto*@
                             <div class="col">
                                 <label>PRODUCTO:</label>
                                 <select class="form-control" @bind="productoSeleccionado" @onclick="EncontrarCosto">
-                                   @foreach (var item in listaProductos)
+                                    @foreach (var item in listaProductos)
                                     {
                                         <option value="@item.productoId">@item.descripcion</option>
                                     }
                                 </select>
                             </div>
-
+                            @*Costo*@
                             <div class="col">
                                 <label>COSTO:</label>
-                                <InputNumber class="form-control" @bind-Value="costoEncontrado" readonly="true"/>
+                                <InputNumber class="form-control" @bind-Value="costoEncontrado" readonly="true" />
                             </div>
-
+                            @*Cantidad*@
                             <div class="col">
                                 <label>CANTIDAD:</label>
                                 <div class="input-group">
@@ -81,7 +81,7 @@
 
                         </div>
                     </div>
-
+                    @*Detalle*@
                     <div class="table-responsive text-nowrap">
                         <table class="table table-striped">
                             <thead class="thead-light">
@@ -94,7 +94,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white">
-                               @foreach (var item in ordenes.OrdenDetalles)
+                                @foreach (var item in ordenes.OrdenDetalles)
                                 {
                                     <tr>
                                         <td>@item.ordenDetalleId</td>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RegistroDeOrdenes.Migrations
 {
-    public partial class CreateOrdenDB : Migration
+    public partial class CreateOrdenesDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,7 +75,7 @@ namespace RegistroDeOrdenes.Migrations
             migrationBuilder.InsertData(
                 table: "Productos",
                 columns: new[] { "productoId", "costo", "descripcion", "inventario" },
-                values: new object[] { 1, 100m, "Salami", 20 });
+                values: new object[] { 1, 100m, "Salami", 0 });
 
             migrationBuilder.InsertData(
                 table: "Suplidores",
