@@ -86,22 +86,22 @@
                         <table class="table table-striped">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Orden Id</th>
                                     <th>Producto Id</th>
+                                    <th>Descripción</th>        
                                     <th>Cantidad</th>
                                     <th>Costo</th>
+                                    <th>Importe</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white">
                                 @foreach (var item in ordenes.OrdenDetalles)
                                 {
                                     <tr>
-                                        <td>@item.ordenDetalleId</td>
-                                        <td>@item.ordenId</td>
                                         <td>@item.productoId</td>
+                                        <td>@GetProductoDescripcion(item.productoId)</td>
                                         <td>@item.cantidad</td>
                                         <td>@item.costo</td>
+                                        <td>@(item.costo*item.cantidad)</td>
                                         <td><button type="button" class="btn btn-outline-danger" @onclick="(() => EliminarOrdenDetalle(item))">Remover</button></td>
                                     </tr>
                                 }
@@ -226,6 +226,18 @@
         }
         CalcularMonto();
 
+    }
+
+    private string GetProductoDescripcion(int id)
+    {
+        var auxProducto = ProductosBLL.Buscar(id);
+        string descripcion = string.Empty;
+        if (auxProducto != null)
+        {
+            descripcion = auxProducto.descripcion;
+        }
+
+        return descripcion;
     }
 
     private void CalcularMonto()
